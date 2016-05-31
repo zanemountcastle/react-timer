@@ -1,0 +1,10 @@
+//partial file - only to be imported
+.top-bar, .top-bar ul {
+  background-color: $nav-background;
+}
+
+.top-bar{
+  .menu-text{
+    color: $nav-text-color;
+  }
+}
