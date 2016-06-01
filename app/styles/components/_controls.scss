@@ -1,0 +1,12 @@
+.controls{
+  display: flex; //flexbox
+  justify-content: center;
+
+  .button{
+    padding: .75rem 3rem;
+  }
+
+  .button:first-child{ //only pause button
+    margin-right: 1.5rem;
+  }
+}
