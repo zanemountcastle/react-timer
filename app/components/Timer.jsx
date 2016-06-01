@@ -1,6 +1,6 @@
 var React = require('react');
 var Clock = require('Clock');
-var TimerControls = require('TimerControls');
+var Controls = require('Controls');
 
 var Timer = React.createClass({
   getInitialState: function(){
@@ -11,11 +11,9 @@ var Timer = React.createClass({
   },
 
   startTimer: function() {
-    console.log("timer start");
     this.timer = setInterval (() => {
-      var newCount = this.state.count + 1;
       this.setState({
-        count: newCount >= 0 ? newCount : 0
+        count: this.state.count + 1
       });
     }, 1000);
   },
@@ -36,6 +34,10 @@ var Timer = React.createClass({
     }
   },
 
+  componentWillUnmount: function(){
+    clearInterval(this.timer);
+  },
+
   handleStatusChange: function (newStatus) {
     this.setState({timerStatus: newStatus});
   },
@@ -47,7 +49,7 @@ var Timer = React.createClass({
       <div>
         <h1 className="page-title">Timer</h1>
         <Clock totalSeconds={count}/>
-        <TimerControls timerStatus={timerStatus} onStatusChange={this.handleStatusChange}/>
+        <Controls countdownStatus={timerStatus} onStatusChange={this.handleStatusChange}/>
       </div>
     );
   }
